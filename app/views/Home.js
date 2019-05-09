@@ -6,10 +6,10 @@ export class Home extends React.Component {
     render() {
         return (
             <View>
+                <Header message = 'Press to Login' />
                 <Text>This will be the Homepage</Text>
                 <Text>These other lines are here</Text>
                 <Text>So you can see the text in the app</Text>
-                <Header message = 'Press to Login' />
             </View>
         );
     }

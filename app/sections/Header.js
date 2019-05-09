@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export class Header extends React.Component {
     
@@ -22,7 +22,33 @@ export class Header extends React.Component {
     render() {
         let display = this.state.isLoggedIn ? 'Sample User' : this.props.message;
         return (
-            <Text onPress={this.toggleUser}>{display}</Text>
+            <View style={styles.headStyle}>
+                <Text
+                    style={styles.headText}
+                    onPress={this.toggleUser}>{display}
+                </Text>
+            </View>
         );
     }
 }
+
+// const styles holds our style object
+const styles = StyleSheet.create({
+
+    // Style for our text component
+    headText: {
+        textAlign: 'right',
+        color: '#ffffff',
+        fontSize: 20
+    },
+
+    // Style for our view that wraps our Text component
+    headStyle: {
+        paddingTop: 30,
+        paddingBottom: 10,
+        paddingRight: 10,
+        backgroundColor: '#35605a'
+    }
+
+
+});
