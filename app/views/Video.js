@@ -17,7 +17,7 @@ export class Video extends React.Component {
 
     // Runs after the component is displayed in our app.
     componentDidMount() {
-        return fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=pluralsight&type=video&key=AIzaSyB-S3H460x7sR-0iPAzqkAjtPti0UpZjmw')
+        return fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=pluralsight&type=video&key={YOUR-API-KEY}}')
         .then((response) => response.json())
         .then((responseJson)=> {
             this.setState({
@@ -27,7 +27,14 @@ export class Video extends React.Component {
         })
         .catch((error) => {
             console.error(error);
-        })
+        });
+    }
 
+    render() {
+        return(
+            <View>
+
+            </View>
+        );
     }
 }
