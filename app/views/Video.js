@@ -31,6 +31,8 @@ export class Video extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
+
         return(
             <View>
                 {/* Wrapping our component with a conditional,
@@ -45,7 +47,8 @@ export class Video extends React.Component {
                             renderItem={({item}) => 
 
                             // Component used as the rendered item.
-                                <TubeItem 
+                                <TubeItem
+                                    navigate = {navigate}
                                     id={item.id.videoId}
                                     title={item.snippet.title}
                                     imageSrc={item.snippet.thumbnails.high.url}
@@ -73,7 +76,7 @@ export class TubeItem extends React.Component {
 
     // Method to deal with user touching a video
     onPress = () => {
-        console.log(this.props.id);
+        this.props.navigate('VideoDetailRT', {youTubeId: this.props.id});
     };
 
     render() {
