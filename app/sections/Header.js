@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, AsyncStorage, Alert } from 'react-native';
 
 export class Header extends React.Component {
     
@@ -7,20 +7,51 @@ export class Header extends React.Component {
     // So it makes sense to initialize our state here.
     constructor(props) {
         super(props); // Super keyword which provides access to our parent class. It prevents a reference error.
-        this.state = {isLoggedIn: false} // Set state
+        this.state = { 
+            isLoggedIn: false, // Set state
+            loggedUser: false // Pass to component to display currently logged-in user
+        };
     }
 
     toggleUser = ()=>{
-        this.setState(previousState => {
+        if (this.state.isLoggedIn) {
+            AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+                this.setState({
+                    isLoggedIn: false,
+                    loggedUser: false
+                });
+                Alert.alert('User logged out');
+            })
+        }
+        else {
+            this.props.navigate('LoginRT')
+        }
+    }
 
-            // Set the isLoggedIn state to the opposite of what the previousState was.
-            // NOTE: state starts off as false. Once method is run, the state changes to true.
-            return { isLoggedIn: !previousState.isLoggedIn };
-        });
+    
+    componentDidMount(){
+        
+        // Check whether user is logged in, every time this component is mounted
+        AsyncStorage.getItem('userLoggedIn', (err, result) => {
+            if (result==='none'){
+                console.log('NONE');
+            }
+            else if (result === null) {
+                AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+                    console.log('Set user to NONE');
+                })
+            }
+            else {
+                this.setState({
+                    isLoggedIn: true,
+                    loggedUser: result
+                });
+            }
+        })
     }
 
     render() {
-        let display = this.state.isLoggedIn ? 'Sample User' : this.props.message;
+        let display = this.state.isLoggedIn ? this.state.loggedUser : this.props.message;
         return (
             <View style={styles.headStyle}>
                 <Image

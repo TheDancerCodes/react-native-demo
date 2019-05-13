@@ -6,6 +6,7 @@ import { StackNavigator } from 'react-navigation';
 import { Video } from './app/views/Video.js';
 import { VideoDetail } from './app/views/VideoDetail.js';
 import { Register } from './app/views/Register.js';
+import { Login } from './app/views/Login.js';
 
 const MyRoutes = StackNavigator({
   HomeRT: {
@@ -23,6 +24,9 @@ const MyRoutes = StackNavigator({
   RegisterRT: {
     screen: Register
   },
+  LoginRT: {
+    screen: Login
+  }
 },
   {
     // Specifying the component to launch when the app starts

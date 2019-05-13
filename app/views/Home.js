@@ -17,7 +17,7 @@ export class Home extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Header message = 'Press to Login' />
+                <Header navigate = { navigate } message = 'Press to Login' />
                 <Hero />
                 
                 {/* Pass the navigation prop to the Menu component*/}
