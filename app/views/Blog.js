@@ -32,7 +32,7 @@ export class Blog extends React.Component {
 
     // chooseBlog method that navigates to the selected blog post
     chooseBlog = (blogID)=>{
-        console.log(`Blog ID chosen: ${blogID}`);
+        this.props.navigation.navigate( 'BlogDetailRT', {blogId: blogID} );
     }
 
     render() {
