@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "react-native-demo-globo",
-    "slug": "globo",
+    "slug": "rnd-globo-release",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.globomantics.reactnativedemoglobo"
+    },
+    "android": {
+      "package": "com.globomantics.reactnativedemoglobo"
     }
   }
 }
